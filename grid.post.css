@@ -81,7 +81,9 @@ The below plugins are needed to successfully compile the css below.
       padding: 0;
     }
     &>.Grid-item {
-      display: initial;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
     }
   }
 }

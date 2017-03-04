@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="theme-color" content="#FFD34E">
+    <link rel="stylesheet" href="./grid.css">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./ocean.css">
+    <title>Future-Grid</title>
+  </head>
+  <body>
+    <header class="header Grid Grid--withGutter">
+      <h1 class="header-title Grid-item u-size12of12 u-md-size2of12">Future-Grid</h1>
+      <nav class="header-nav Grid-item u-size12of12 u-md-size10of12">
+        <ul class="header-list">
+          <li><a href="#intro" class="header-link">Intro</a></li>
+          <li><a href="#impl" class="header-link">Implementation</a></li>
+          <li><a href="#support" class="header-link">FAQ</a></li>
+          <li><a href="#more" class="header-link">More</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="main">
+      <section class="section section--intro" id="intro">
+        <h2 class="section-title">Introduction</h2>
+        <p class="section-text">
+          Future-Grid is a <del>yet another</del> CSS grid system. What makes Future-Grid different is that it supports 
+          browsers from IE9<sup>*</sup> and up, and it is the first grid system to be implemented with a progressively enhanced 
+          variant using CSS Grid.
+        </p>
+        <p class="section-text">
+          Its also a barebones grid system with a responsive sizing system and makes for a quick utility to drop into any 
+          new or old website/webapp project.
+        </p>
+      </section>
+      <section class="section section--impl" id="impl">
+        <h2 class="section-title">Implementation</h2>
+        <div class="Grid">
+          <div class="Grid-item u-size12of12 u-md-size6of12">
+            <p class="section-text">
+              The classnames are fairly straight forward, as you can see in the demo <ins class="location"></ins> 
+              all you need to do is add a few utility classes to your elements and all the styling is taken care of 
+              for you.
+            </p>
+            <p class="section-text">
+              In this example, the layout would be two equal columns on either side of the main section content that would 
+              be taking up the middle 8/12ths of the screen.
+            </p>
+          </div>
+          <pre class="Grid-item u-size12of12 u-md-size6of12"><code class="html">
+&lt;main class="Grid Grid--withGutter"&gt;
+  &lt;aside class="Grid-item u-size2of12"&gt;
+    [... sidebar content]
+  &lt;/aside&gt;
+  &lt;article class="Grid-item u-size8of12"&gt;
+    [... main content]
+  &lt;/article&gt;
+  &lt;aside class="Grid-item u-size2of12"&gt;
+    [... some other aside content]
+  &lt;/aside&gt;
+&lt;/main&gt;
+          </code></pre>
+        </div>
+      </section>
+      <section class="section section--support" id="support">
+        <h2 class="section-title">FAQ</h2>
+        <details class="details" open>
+          <summary class="details-summary">Whats with the asterisk on IE9?</summary>
+          <p class="section-text">
+            There are two lines of css that break IE8 compatibility by using <code>rem</code>. You can however search 
+            and replace the <code>rem</code> with the root font-size (in px! not %/em) of your website and you will be 
+            able to use the Future-Grid in IE8.
+          </p>
+          <p class="section-text">
+            Unfortunately because IE7 doesn't support <code>inline-block</code>, but I really hope you don't have to support IE7 anymore.
+          </p>
+        </details>
+        <details class="details" open>
+          <summary class="details-summary">Why isn't flexbox used on IE11?</summary>
+          <p class="section-text">
+            IE11 has a really bad track record with the flexbox spec. It has implemented an older version of 
+            the spec that has a ton of bugs currently.
+          </p>
+          <p class="section-text">
+            The hack to get around using flexbox on these browsers that support it is to wrap it in an <code>@supports</code> block. 
+            Because IE11 doesn't support this in css it ignores the flexbox styles and uses the fallback.
+          </p>
+        </details>
+        <details class="details" open>
+          <summary class="details-summary">Why should I be adopting CSS Grid?</summary>
+          <p class="section-text">
+            Well besides the fact that the major browser vendors by the middle of this year will all support 
+            Grid, it took most CSS developers many <strong>years</strong> to start using Flexbox, and I 
+            personally would like to see many of us adopt these new standards.
+          </p>
+        </details>
+        <details class="details" open>
+          <summary class="details-summary">I thought CSS Grid was supposed to be really custom!</summary>
+          <p class="section-text">
+            It is! A grid framework is really only the barebones. If you feel the need to build full layouts and 
+            customize them then remove this css and start writing your own grid system using CSS Grid. I fully 
+            believe that with CSS Grid we will no longer need these kind of frameworks.
+          </p>
+        </details>
+        <details class="details" open>
+          <summary class="details-summary">How can I use this in my website/project?</summary>
+          <p class="section-text">
+            Easy! Just grab the css, modify as needed and add it to your website. The only thing I ask is that you leave a 
+            CSS comment attributing me and this repo.
+          </p>
+        </details>
+        <details class="details" open>
+          <summary class="details-summary">How do I customize this?</summary>
+          <p class="section-text">
+            Well you can grab the raw source and manually edit it to your hearts content, or you can grab the scss
+             file and modify it, or grab the postcss file and modify it from there.
+          </p>
+        </details>
+      </section>
+      <section class="section section--more" id="more">
+        <h2 class="section-title">More</h2>
+        <p class="section-text">
+          If you want to see the code yourself, head on over to <a href="https://github.com/hamlim/Future-Grid" class="section-link">github</a> 
+          and check it out. Also if you find any bugs or problems with Future-Grid, open an issue and I will work with you to find a solution!
+      </section>
+    </main>
+    <footer class="footer">
+      <h4 class="footer-title">Made with 💪🏼 and 🎧 by <a href="https://matthamlin.me" class="footer-link">Matt Hamlin</a></h4>
+    </footer>
+    <script src="./highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
