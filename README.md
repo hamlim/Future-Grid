@@ -64,4 +64,4 @@ and modify it from there.
 
 ## Found a bug?
 
-_**File an Issue**_
+_**File an Issue!**_
