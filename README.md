@@ -69,6 +69,6 @@ _**File an Issue!**_
 
 ## Todos / Planned Updates:
 
-- [ ] Postcss source file
-- [ ] scss source file
+- [x] Postcss source file
+- [x] scss source file
 - [ ] minified css file

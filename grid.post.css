@@ -50,6 +50,7 @@ The below plugins are needed to successfully compile the css below.
     margin: 0;
     padding: 0;
     font-size: var(--font-size, 1rem);
+    display: inline-block;
   }
   &--withGutter {
     padding: var(--padding, 10px);
@@ -64,6 +65,8 @@ The below plugins are needed to successfully compile the css below.
     flex-wrap: wrap;
     .Grid-item {
       min-height: 100%;
+      display: flex;
+      flex-direction: column;
     }
   }
   @supports (display: grid) {
@@ -71,12 +74,14 @@ The below plugins are needed to successfully compile the css below.
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     &--withGutter {
+      grid-column-gap: var(--gutter, 20px);
+      grid-row-gap: var(--gutter, 20px);
+    }
+    &--withGutter > .Grid-item {
       padding: 0;
-      grid-column-gap: var(--padding, 10px);
-      grid-row-gap: var(--padding, 10px);
     }
     &>.Grid-item {
-      padding: 0;
+      display: initial;
     }
   }
 }

@@ -1,0 +1,138 @@
+/*
+  Future-Grid - 2017 - Matt Hamlin - @immatthamlin / hamlim
+
+  Browser support:
+  IE9* - ANY browser
+
+  *( you can support IE8 if you search and replace `1rem` with your base root font-size in this file )
+
+  Future-Grid uses a flexbox fallback grid from IE9* - Edge 13 through the use of `@supports`
+  It uses flexbox as its primary system in browsers that support @supports and flexbox
+  and it uses CSS Grid for browsers the support @supports and Grid
+
+  Because it uses padding for spacing between elements to avoid `calc`, you might need to use a wrapper element 
+    around any column of content to handle spacing properly (think background images and elements that need to set 
+    custom padding)
+  
+  Common html structure look like this:
+  <div class="grid grid--withGutter">
+    <div class="grid-item u-size3of12">
+      [... your component or something ]
+    </div>
+    <div class="grid-item u-size9of12">
+      [ ... main content maybe ]
+    </div>
+  </div>
+
+*/
+
+@mixin Grid(
+  $Grid-gutter: 20px,
+  $Grid-rootFontSize: 1rem,
+  $Grid-breakpoints-map: (
+    (
+      breakpoint: null,
+      modifier: null
+    ),
+    (
+      breakpoint: 640px,
+      modifier: 'sm-'
+    ),
+    (
+      breakpoint: 960px,
+      modifier: 'md-'
+    ),
+    (
+      breakpoint: 1280px,
+      modifier: 'lg-'
+    ),
+    (
+      breakpoint: 1280px,
+      modifier: 'xl-'
+    )
+  )
+) {
+  .Grid {
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+    & > &-item {
+      display: inline-block;
+      font-size: $Grid-rootFontSize;
+    }
+    &--withGutter {
+      padding: $Grid-gutter / 2;
+      & > .Grid-item {
+        padding: $Grid-gutter / 2;
+      }
+    }
+
+    @supports (display: flex) {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      font-size: $Grid-rootFontSize;
+
+      &-item {
+        min-height: 100%;
+        display: flex;
+      }
+    }
+
+    @supports (display: grid) {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+
+      &--withGutter {
+        grid-column-gap: $Grid-gutter;
+        grid-row-gap: $Grid-gutter;
+      }
+      &--withGutter > &-item {
+        padding: 0;
+      }
+      &-item {
+        display: initial;
+      }
+    }
+  }
+
+  @each $breakpoint in $Grid-breakpoints-map {
+    @if (not map-get($breakpoint, breakpoint)) {
+      @for $i from 1 to 13 {
+        .u-size#{$i}of12 {
+          width: ($i / 12 * 100%);
+        }
+      }
+    } @else {
+      @media screen and (min-width: map-get($breakpoint, breakpoint)) {
+        @for $i from 1 to 13 {
+          .u-#{map-get($breakpoint, modifier)}size#{$i}of12 {
+            width: ($i / 12 * 100%);
+          }
+        }
+      }
+    }
+  }
+
+  @supports (display: grid) {
+    @each $breakpoint in $Grid-breakpoints-map {
+      @if (not map-get($breakpoint, breakpoint)) {
+        @for $i from 1 to 13 {
+          .u-size#{$i}of12 {
+            width: auto;
+            column-span: span $i;
+          }
+        }
+      } @else {
+        @media screen and (min-width: map-get($breakpoint, breakpoint)) {
+          @for $i from 1 to 13 {
+            .u-#{map-get($breakpoint, modifier)}size#{$i}of12 {
+              width: auto;
+              column-span: span $i;
+            }
+          }
+        }
+      }
+    }
+  }
+}
