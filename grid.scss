@@ -120,7 +120,7 @@
         @for $i from 1 to 13 {
           .u-size#{$i}of12 {
             width: auto;
-            column-span: span $i;
+            grid-column: span $i;
           }
         }
       } @else {
@@ -128,7 +128,7 @@
           @for $i from 1 to 13 {
             .u-#{map-get($breakpoint, modifier)}size#{$i}of12 {
               width: auto;
-              column-span: span $i;
+              grid-column: span $i;
             }
           }
         }
