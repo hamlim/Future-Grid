@@ -91,7 +91,8 @@
         padding: 0;
       }
       &-item {
-        display: initial;
+        display: flex;
+        flex-direction: column;
       }
     }
   }
