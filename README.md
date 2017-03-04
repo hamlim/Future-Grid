@@ -71,4 +71,4 @@ _**File an Issue!**_
 
 - [x] Postcss source file
 - [x] scss source file
-- [ ] minified css file
+- [x] minified css file
