@@ -15,11 +15,11 @@ First off a small warning, because the gutter variant of the grid uses padding f
 wrap your markup that you use in each column with a wrapping element that you use the `Grid-item` and `u-sizeNof12` classes on.
 
 ```HTML
-<div class="grid grid--withGutter">
-  <div class="grid-item u-size3of12">
+<div class="Grid Grid--withGutter">
+  <div class="Grid-item u-size3of12">
     [ ... Sidebar markup ]
   </div>
-  <div class="grid-item u-size9of12">
+  <div class="Grid-item u-size9of12">
     [ ... main content markup ]
   </div>
 </div>

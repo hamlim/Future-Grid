@@ -1,0 +1,161 @@
+/*
+  Future-Grid - 2017 - Matt Hamlin - @immatthamlin / hamlim
+
+  Browser support:
+  IE9* - ANY browser
+
+  *( you can support IE8 if you search and replace `1rem` with your base root font-size in this file )
+
+  Future-Grid uses a flexbox fallback grid from IE9* - Edge 13 through the use of `@supports`
+  It uses flexbox as its primary system in browsers that support @supports and flexbox
+  and it uses CSS Grid for browsers the support @supports and Grid
+
+  Because it uses padding for spacing between elements to avoid `calc`, you might need to use a wrapper element 
+    around any column of content to handle spacing properly (think background images and elements that need to set 
+    custom padding)
+  
+  Common html structure look like this:
+  <div class="grid grid--withGutter">
+    <div class="grid-item u-size3of12">
+      [... your component or something ]
+    </div>
+    <div class="grid-item u-size9of12">
+      [ ... main content maybe ]
+    </div>
+  </div>
+
+*/
+
+
+/*
+
+The below plugins are needed to successfully compile the css below.
+
+@use postcss-for;
+@use postcss-nested;
+@use postcss-cssnext;
+*/
+
+:root {
+  --font-size: 1rem;
+  --gutter: 20px;
+  --padding: calc(var(--gutter) / 2);
+}
+
+.Grid {
+  font-size: 0;
+  margin: 0;
+  padding: 0;
+  .Grid-item {
+    margin: 0;
+    padding: 0;
+    font-size: var(--font-size, 1rem);
+  }
+  &--withGutter {
+    padding: var(--padding, 10px);
+  }
+  &--withGutter>.Grid-item {
+    padding: var(--padding, 10px);
+  }
+  @supports (display: flex) {
+    font-size: var(--font-size, 1rem);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .Grid-item {
+      min-height: 100%;
+    }
+  }
+  @supports (display: grid) {
+    font-size: var(--font-size, 1rem);
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    &--withGutter {
+      padding: 0;
+      grid-column-gap: var(--padding, 10px);
+      grid-row-gap: var(--padding, 10px);
+    }
+    &>.Grid-item {
+      padding: 0;
+    }
+  }
+}
+
+@for $size from 1 to 12 {
+  .u-size$(size)of12 {
+    width: calc( $size / 12 * 100%);
+  }
+}
+
+@media screen and (min-width: 640px) {
+  @for $size from 1 to 12 {
+    .u-sm-size$(size)of12 {
+      width: calc( $size / 12 * 100%);
+    }
+  }
+}
+
+@media screen and (min-width: 960px) {
+  @for $size from 1 to 12 {
+    .u-md-size$(size)of12 {
+      width: calc( $size / 12 * 100%);
+    }
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  @for $size from 1 to 12 {
+    .u-lg-size$(size)of12 {
+      width: calc( $size / 12 * 100%);
+    }
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  @for $size from 1 to 12 {
+    .u-xl-size$(size)of12 {
+      width: calc( $size / 12 * 100%);
+    }
+  }
+}
+
+@supports (display: grid) {
+  @for $size from 1 to 12 {
+    .u-size$(size)of12 {
+      width: auto;
+      grid-column: span $size;
+    }
+  }
+  @media screen and (min-width: 640px) {
+    @for $size from 1 to 12 {
+      .u-sm-size$(size)of12 {
+        width: auto;
+        grid-column: span $size;
+      }
+    }
+  }
+  @media screen and (min-width: 960px) {
+    @for $size from 1 to 12 {
+      .u-md-size$(size)of12 {
+        width: auto;
+        grid-column: span $size;
+      }
+    }
+  }
+  @media screen and (min-width: 1280px) {
+    @for $size from 1 to 12 {
+      .u-lg-size$(size)of12 {
+        width: auto;
+        grid-column: span $size;
+      }
+    }
+  }
+  @media screen and (min-width: 1440px) {
+    @for $size from 1 to 12 {
+      .u-xl-size$(size)of12 {
+        width: auto;
+        grid-column: span $size;
+      }
+    }
+  }
+}

@@ -15,60 +15,59 @@
     custom padding)
   
   Common html structure look like this:
-  <div class="grid grid--withGutter">
-    <div class="grid-item u-size3of12">
+  <div class="Grid Grid--withGutter">
+    <div class="Grid-item u-size3of12">
       [... your component or something ]
     </div>
-    <div class="grid-item u-size9of12">
+    <div class="Grid-item u-size9of12">
       [ ... main content maybe ]
     </div>
   </div>
 
 */
 
-.grid {
+.Grid {
   font-size: 0;
   padding: 0;
   margin: 0;
 }
 
-.grid--withGutter {
+.Grid--withGutter {
   padding: 10px;
 }
 
-.grid-item {
+.Grid-item {
   font-size: 1rem;
 }
 
-.grid--withGutter>.grid-item {
+.Grid--withGutter>.Grid-item {
   padding: 10px;
 }
 
 @supports (display: flex) {
-  .grid {
+  .Grid {
     font-size: 1rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
   }
-  .grid-item {
+  .Grid-item {
     min-height: 100%;
   }
 }
 
 @supports (display: grid) {
-  .grid {
-    font-style: oblique;
-    nt-size: 1rem;
+  .Grid {
+    font-size: 1rem;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
   }
-  .grid--withGutter {
+  .Grid--withGutter {
     padding: 0;
     grid-column-gap: 10px;
     grid-row-gap: 10px;
   }
-  .grid>.grid-item {
+  .Grid>.Grid-item {
     padding: 0;
   }
 }
@@ -120,9 +119,6 @@
 .u-size12of12 {
   width: 100%;
 }
-
-
-/*   // 640px 960px 1280px; */
 
 @media screen and (min-width: 640px) {
   .u-sm-size1of12 {
