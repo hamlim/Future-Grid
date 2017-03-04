@@ -65,3 +65,10 @@ and modify it from there.
 ## Found a bug?
 
 _**File an Issue!**_
+
+
+## Todos / Planned Updates:
+
+- [] Postcss source file
+- [] scss source file
+- [] minified css file
