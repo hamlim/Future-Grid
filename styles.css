@@ -86,6 +86,11 @@ html {
   text-decoration: underline;
 }
 
+.main {
+  max-width: 35rem;
+  margin: 0 auto;
+}
+
 .section {
   min-height: 25vh;
   padding: 1rem;

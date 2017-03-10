@@ -73,4 +73,5 @@ _**File an Issue!**_
 - [x] scss source file
 - [x] minified css file
 - [ ] Css modules definition of the grid system (for importing into react/whatever)
-- [ ] Github Pages to explain the grid features
+- [x] Github Pages to explain the grid features
+- [x] React Grid and Column modues
